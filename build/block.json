@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/pricing-table",
+  "version": "1.0.0",
+  "title": "Pricing Table",
+  "category": "widgets",
+  "description": "Short description of the Pricing Table",
+  "keywords": [
+    "Pricing Table"
+  ],
+  "textdomain": "b-blocks",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "colors": {
+      "type": "object",
+      "default": {
+        "color": "black",
+        "bg": "#B1C5A4"
+      }
+    },
+    "plans": {
+      "type": "array",
+      "default": [
+        {
+          "planTitle": "BASIC PLAN",
+          "price": "6.95",
+          "discount": "35%",
+          "icon": "star",
+          "buttonBg": "#B1C5A4",
+          "buttonColor": "black",
+          "buttonHoverBg": "#B1C5A4",
+          "buttonHoverColor": "black",
+          "features": [
+            {
+              "label": "Domain",
+              "value": "1"
+            },
+            {
+              "label": "Disk Space",
+              "value": "10 GB"
+            },
+            {
+              "label": "Bandwidth",
+              "value": "50 GB"
+            },
+            {
+              "label": "Free Domain",
+              "value": "1"
+            },
+            {
+              "label": "FTP Account",
+              "value": "1"
+            }
+          ],
+          "currencySymbol": "$",
+          "monthLabel": "/ Month",
+          "saveLabel": "Save",
+          "buyNowLabel": "BUY NOW",
+          "buyNowLink": "https://example.com",
+          "backgroundColor": "#B1C5A4",
+          "popular": false,
+          "typography": {
+            "fontWeight": "bold",
+            "fontCategory": "sans-serif",
+            "fontFamily": "Abhaya Libre",
+            "fontStyle": "italic",
+            "fontVariant": "500",
+            "letterSpace": "0px",
+            "lineHeight": "0%",
+            "textDecoration": "underline",
+            "textTransform": "uppercase",
+            "isUploadFont": true,
+            "fontSize": {
+              "desktop": 63,
+              "tablet": 50,
+              "mobile": 37
+            }
+          }
+        }
+      ]
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
