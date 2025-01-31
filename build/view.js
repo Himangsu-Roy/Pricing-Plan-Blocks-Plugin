@@ -422,24 +422,74 @@ const Style = ({
   id
 }) => {
   const {
-    typography
+    plans,
+    alignment
   } = attributes;
+
+  // if (alignment == "center") {
+  //   setAttributes({ alignment: "center" });
+  // } else if (alignment == "right") {
+  //   setAttributes({ alignment: "right" });
+  // } else {
+  //   setAttributes({ alignment: "left" });
+  // }
+
   const mainSl = `#${id}`;
-  const blockSl = `${mainSl} .bBlocksPricingTable `;
+  const planTitle = `${mainSl} .container .column .pricing-card .pricing-header .plan-title`;
+  const pricingTitle = `${mainSl} .container .column .pricing-card .pricing-header .price-circle .price-title`;
+  const currencySymbol = `${mainSl} .container .column .pricing-card .pricing-header .price-circle small`;
+  const duration = `${mainSl} .container .column .pricing-card .pricing-header .price-circle .info`;
+  const popular = `${mainSl} .container .column .pricing-card .popular`;
+  const cardBgColor = `${mainSl} .container .column .pricing-card .pricing-header`;
+  const priceCircleBgColor = `${mainSl} .container .column .pricing-card .pricing-header .price-circle`;
+  const priceCircleBorderColor = `${mainSl} .container .column .pricing-card .pricing-header .price-circle`;
+  const badgeBox = `${mainSl} .container .column .pricing-card .badge-box .badge`;
+
   // ${blockSl} p{
   // 	${getColorsCSS(colors)}
   // }
+
+  // ${getTypoCSS("", typography)?.googleFontLink}
+  // ${getTypoCSS(blockSl, typography)?.styles}
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
 		
-		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", typography)?.googleFontLink}
-        ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(blockSl, typography)?.styles}
 		
-		${blockSl} {
-			
+		
+		${planTitle} {
+			font-size: 24px;
+      color: white;
 		}
+
+    ${pricingTitle}{
+      font-weight: bold;
+      font-size: 28px;
+    }
+   
+    ${currencySymbol}{
+      font-size: 18px;
+    }
+
+    ${duration} {
+      font-size: 12px;
+      font-weight: bold;
+      color: gray;
+    }
+
+    ${popular}{
+      background-color: #eb3b5a;
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      background-color: #eb3b5a;   
+    }
+
+    ${badgeBox}{
+      border: 1px solid #4b7bec;
+      color: #4b7bec;
+    }
 		
 
 	`
@@ -520,10 +570,28 @@ const PricingTable = ({
       plans: updatedPlans
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("body", null, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container",
-    key: index
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+
+  //
+  const handlePreviewClick = e => {
+    e.preventDefault();
+    plans.map((plan, index) => {
+      if (plan.buyNowLink) {
+        wp.data.dispatch("core/notices").createInfoNotice(`Link: ${plan.buyNowLink}`, {
+          isDismissible: true,
+          type: "snackbar"
+        });
+        (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+          href: plan.buyNowLink,
+          target: "_blank",
+          rel: "noreferrer"
+        });
+      }
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("body", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "container"
+  }, plans.map((plan, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
     className: "column"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pricing-card basic"
@@ -584,7 +652,9 @@ const PricingTable = ({
       discount: value
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Discount", "b-blocks")
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, plan.features.map((feature, featureIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "feature-list"
+  }, plan.features.map((feature, featureIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     onClick: () => setSelectedFeatureIndex(featureIndex),
     key: featureIndex
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -598,6 +668,7 @@ const PricingTable = ({
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Feature Value", "b-blocks")
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "feature-label",
     tagName: "span",
     value: feature.label,
     onChange: value => updatePlan(index, {
@@ -614,6 +685,7 @@ const PricingTable = ({
     target: "_blank",
     rel: "noreferrer",
     className: "buy-now"
+    // onClick={handlePreviewClick}
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "span",
     value: plan.buyNowLabel,

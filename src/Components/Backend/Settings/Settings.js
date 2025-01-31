@@ -1,11 +1,14 @@
-
-import { __ } from '@wordpress/i18n';
-import { InspectorControls, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
-import { TabPanel } from '@wordpress/components';
-import { tabController } from '../../../../../bpl-tools/utils/functions';
-import { generalStyleTabs } from '../../../utils/options';
-import General from './General/General';
-import Style from './Style/Style';
+import { __ } from "@wordpress/i18n";
+import {
+  InspectorControls,
+  BlockControls,
+  AlignmentToolbar,
+} from "@wordpress/block-editor";
+import { TabPanel } from "@wordpress/components";
+import { tabController } from "../../../../../bpl-tools/utils/functions";
+import { generalStyleTabs } from "../../../utils/options";
+import General from "./General/General";
+import Style from "./Style/Style";
 
 const Settings = ({ attributes, setAttributes, selectedFeatureIndex }) => {
   const { alignment } = attributes;
@@ -56,7 +59,7 @@ const Settings = ({ attributes, setAttributes, selectedFeatureIndex }) => {
           alignmentControls={[
             {
               title: __("Block Name in left", "textdomain"),
-              align: "left",
+              align: "start",
               icon: "align-left",
             },
             {
@@ -66,7 +69,7 @@ const Settings = ({ attributes, setAttributes, selectedFeatureIndex }) => {
             },
             {
               title: __("Block Name in right", "textdomain"),
-              align: "right",
+              align: "end",
               icon: "align-right",
             },
           ]}

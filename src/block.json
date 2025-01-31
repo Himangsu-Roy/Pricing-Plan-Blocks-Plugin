@@ -48,21 +48,182 @@
           "buyNowLink": "https://example.com",
           "backgroundColor": "#B1C5A4",
           "popular": false,
+          "popularLabel": "POPULAR",
+          "popularColor": "#B1C5A4",
+          "popularBg": "black",
+          "shadow": {
+            "cardShadow": [
+              {
+                "hOffset": "0px",
+                "vOffset": "0px",
+                "blur": "0px",
+                "spreed": "0px",
+                "color": "#000000",
+                "isInset": false
+              }
+            ],
+
+            "buttonShadow": [
+              {
+                "hOffset": "0px",
+                "vOffset": "0px",
+                "blur": "0px",
+                "spreed": "0px",
+                "color": "#000000",
+                "isInset": false
+              }
+            ],
+
+            "popularShadow": [
+              {
+                "hOffset": "0px",
+                "vOffset": "0px",
+                "blur": "0px",
+                "spreed": "0px",
+                "color": "#000000",
+                "isInset": false
+              }
+            ]
+          },
+
           "typography": {
-            "fontWeight": "bold",
-            "fontCategory": "sans-serif",
-            "fontFamily": "Abhaya Libre",
-            "fontStyle": "italic",
-            "fontVariant": "500",
-            "letterSpace": "0px",
-            "lineHeight": "0%",
-            "textDecoration": "underline",
-            "textTransform": "uppercase",
-            "isUploadFont": true,
-            "fontSize": {
-              "desktop": 63,
-              "tablet": 50,
-              "mobile": 37
+            "planTitle": {
+              "fontWeight": "normal",
+              "fontFamily": "Arial",
+              "fontStyle": "normal",
+              "fontVariant": "normal",
+              "fontSize": {
+                "desktop": 24,
+                "tablet": 20,
+                "mobile": 16
+              },
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
+              "color": "#000000",
+              "backgroundColor": "transparent",
+              "alignment": "center"
+            },
+            "dollar": {
+              "fontWeight": "normal",
+              "fontFamily": "Arial",
+              "fontStyle": "normal",
+              "fontVariant": "normal",
+              "fontSize": {
+                "desktop": 48,
+                "tablet": 36,
+                "mobile": 28
+              },
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "1px",
+              "lineHeight": "120%",
+              "color": "#333333",
+              "backgroundColor": "transparent",
+              "alignment": "center"
+            },
+            "money": {
+              "fontWeight": "600",
+              "fontFamily": "Roboto",
+              "fontStyle": "italic",
+              "fontSize": {
+                "desktop": 40,
+                "tablet": 30,
+                "mobile": 20
+              },
+              "textTransform": "capitalize",
+              "textDecoration": "line-through",
+              "letterSpacing": "-0.5px",
+              "lineHeight": "90%",
+              "color": "#ff0000",
+              "backgroundColor": "transparent",
+              "alignment": "right"
+            },
+            "month": {
+              "fontWeight": "lighter",
+              "fontFamily": "Verdana",
+              "fontStyle": "normal",
+              "fontSize": {
+                "desktop": 30,
+                "tablet": 24,
+                "mobile": 18
+              },
+              "textTransform": "lowercase",
+              "textDecoration": "overline",
+              "letterSpacing": "0.2px",
+              "lineHeight": "110%",
+              "color": "#00ff00",
+              "backgroundColor": "transparent",
+              "alignment": "left"
+            },
+            "save": {
+              "fontWeight": "lighter",
+              "fontFamily": "Verdana",
+              "fontStyle": "normal",
+              "fontSize": {
+                "desktop": 30,
+                "tablet": 24,
+                "mobile": 18
+              },
+              "textTransform": "lowercase",
+              "textDecoration": "overline",
+              "letterSpacing": "0.2px",
+              "lineHeight": "110%",
+              "color": "#00ff00",
+              "backgroundColor": "transparent",
+              "alignment": "left"
+            },
+            "featureList": {
+              "fontWeight": "lighter",
+              "fontFamily": "Verdana",
+              "fontStyle": "normal",
+              "fontSize": {
+                "desktop": 30,
+                "tablet": 24,
+                "mobile": 18
+              },
+              "textTransform": "lowercase",
+              "textDecoration": "overline",
+              "letterSpacing": "0.2px",
+              "lineHeight": "110%",
+              "color": "#00ff00",
+              "backgroundColor": "transparent",
+              "alignment": "left"
+            },
+            "button": {
+              "fontWeight": "lighter",
+              "fontFamily": "Verdana",
+              "fontStyle": "normal",
+              "fontSize": {
+                "desktop": 30,
+                "tablet": 24,
+                "mobile": 18
+              },
+              "textTransform": "lowercase",
+              "textDecoration": "overline",
+              "letterSpacing": "0.2px",
+              "lineHeight": "110%",
+              "color": "#00ff00",
+              "backgroundColor": "transparent",
+              "alignment": "left"
+            },
+            "popular": {
+              "fontWeight": "lighter",
+              "fontFamily": "Verdana",
+              "fontStyle": "normal",
+              "fontSize": {
+                "desktop": 30,
+                "tablet": 24,
+                "mobile": 18
+              },
+              "textTransform": "lowercase",
+              "textDecoration": "overline",
+              "letterSpacing": "0.2px",
+              "lineHeight": "110%",
+              "color": "#00ff00",
+              "backgroundColor": "transparent",
+              "alignment": "left"
             }
           }
         }

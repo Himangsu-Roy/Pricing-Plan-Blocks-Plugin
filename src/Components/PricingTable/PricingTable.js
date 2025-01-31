@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useBlockProps, RichText, URLInput } from "@wordpress/block-editor";
 import { Button, PanelBody } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -17,12 +17,29 @@ const PricingTable = ({
     setAttributes({ plans: updatedPlans });
   };
 
+  //
+  const handlePreviewClick = (e) => {
+    e.preventDefault();
+    plans.map((plan, index) => {
+      if (plan.buyNowLink) {
+        wp.data
+          .dispatch("core/notices")
+          .createInfoNotice(`Link: ${plan.buyNowLink}`, {
+            isDismissible: true,
+            type: "snackbar",
+          });
+
+        <a href={plan.buyNowLink} target="_blank" rel="noreferrer"></a>;
+      }
+    });
+  };
+
   return (
     <>
       <body>
-        {plans.map((plan, index) => (
-          <div className="container" key={index}>
-            <div className="column">
+        <div className="container">
+          {plans.map((plan, index) => (
+            <div key={index} className="column">
               <div
                 className="pricing-card basic"
                 // style={{ backgroundColor: plan.backgroundColor }}
@@ -107,7 +124,7 @@ const PricingTable = ({
                   </div>
                 </div>
 
-                <ul>
+                <ul className="feature-list">
                   {plan.features.map((feature, featureIndex) => (
                     <li
                       onClick={() => setSelectedFeatureIndex(featureIndex)}
@@ -130,6 +147,7 @@ const PricingTable = ({
                       />
 
                       <RichText
+                        className="feature-label"
                         tagName="span"
                         value={feature.label}
                         onChange={(value) =>
@@ -153,8 +171,8 @@ const PricingTable = ({
                     target="_blank"
                     rel="noreferrer"
                     className="buy-now"
+                    // onClick={handlePreviewClick}
                   >
-                    {/* {plan.buyNowLabel} */}
                     <RichText
                       tagName="span"
                       value={plan.buyNowLabel}
@@ -165,10 +183,32 @@ const PricingTable = ({
                     />
                   </a>
                 </div>
+
+                {/* <div>
+                  <div className="buy-now-preview">
+                    {plan.buyNowLabel}
+                    <span className="link-url">
+                      (Link: {plan.buyNowLink || "Not set"})
+                    </span>
+                  </div>
+                  <URLInput
+                    value={plan.buyNowLink}
+                    onChange={(url) => setAttributes({ buyNowLink: url })}
+                  />
+                </div> */}
+
+                {/* <div
+                  className="buy-now-preview"
+                  onClick={handlePreviewClick}
+                  role="button"
+                  tabIndex={0}
+                >
+                  Buy Now
+                </div> */}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </body>
     </>
   );

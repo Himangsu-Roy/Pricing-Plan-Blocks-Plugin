@@ -127,27 +127,30 @@ $primaryColor: #4527a4;
     background-repeat: no-repeat;
     background-position: center center;
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   .container {
     // max-width: 1200px;
-    width: 100%;
+    // width: 100%;
     height: auto;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
     text-align: center;
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   .column {
-    flex: 25%;
+    // flex: 25%;
     padding: 10px;
-    width: calc(33.3% - 30px);
+    // width: calc(33.3% - 30px);
+    max-width: 400px;
     box-sizing: border-box;
 
     @media screen and (max-width: 980px) {
@@ -184,11 +187,11 @@ $primaryColor: #4527a4;
       padding: 10px;
       border-bottom-left-radius: $radius;
       border-bottom-right-radius: $radius;
-      background-color: #eb3b5a;
-      color: white;
-      font-size: 12px;
+      // background-color: #eb3b5a;
+      // color: white;
+      // font-size: 12px;
+      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       z-index: 1;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
     .badge-box {
       padding: 0 40px;
@@ -196,11 +199,11 @@ $primaryColor: #4527a4;
       .badge {
         display: inline-block;
         align-items: center;
-        border: 1px solid $primary;
+        // border: 1px solid $primary;
         padding: 4px 12px;
         border-radius: 25px;
         overflow: hidden;
-        color: $primary;
+        // color: $primary;
       }
     }
 
@@ -219,8 +222,8 @@ $primaryColor: #4527a4;
         */
 
       .plan-title {
-        font-size: 24px;
-        color: white;
+        // font-size: 24px;
+        // color: white;
         position: relative;
         top: 25%;
       }
@@ -237,18 +240,18 @@ $primaryColor: #4527a4;
         //box-shadow: 1px 3px 5px rgba(0, 0, 0, .4);
         .info {
           display: block;
-          font-size: 12px;
-          font-weight: bold;
-          color: gray;
+          // font-size: 12px;
+          // font-weight: bold;
+          // color: gray;
         }
 
         .price-title {
           display: block;
-          font-size: 28px;
+          // font-size: 28px;
           padding: 28px 0 0;
-          font-weight: bold;
+          // font-weight: bold;
           small {
-            font-size: 18px;
+            // font-size: 18px;
           }
         }
       }

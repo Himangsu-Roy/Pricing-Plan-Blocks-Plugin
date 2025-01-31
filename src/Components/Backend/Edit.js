@@ -21,8 +21,8 @@ const Edit = (props) => {
     <>
       <Settings {...{ attributes, setAttributes, selectedFeatureIndex }} />
 
-      <div {...useBlockProps()}>
-        <Style attributes={attributes} id={`block-${clientId}`} />
+      <div {...useBlockProps()} id={`bBlocksPricingTable-${clientId}`}>
+        <Style attributes={attributes} id={`bBlocksPricingTable-${clientId}`} />
 
         <PricingTable
           setSelectedFeatureIndex={setSelectedFeatureIndex}

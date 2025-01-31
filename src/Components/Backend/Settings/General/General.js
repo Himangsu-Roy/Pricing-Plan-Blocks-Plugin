@@ -77,7 +77,11 @@ const General = ({ attributes, setAttributes, selectedFeatureIndex }) => {
       popular: false,
     };
 
-    setAttributes({ plans: [...plans, newPlan] });
+    const newCard = {
+      ...plans[0],
+    };
+
+    setAttributes({ plans: [...plans, newCard] });
   };
 
   // Function to handle changes to each plan's attributes
