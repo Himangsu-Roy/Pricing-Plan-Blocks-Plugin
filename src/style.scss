@@ -1,3 +1,4 @@
+ @import url("https://fonts.googleapis.com/css?family=Montserrat");
 $primaryColor: #4527a4;
 
 .wp-block-b-blocks-pricing-table {
@@ -40,85 +41,85 @@ $primaryColor: #4527a4;
       background-color: $primary;
     }
     .price-circle {
-      border: 10px solid $primary;
+      // border: 10px solid $primary;
       transition: all 0.4s;
     }
-    &:hover {
-      .price-circle {
-        border-width: 5px;
-      }
-    }
+    // &:hover {
+    //   .price-circle {
+    //     border-width: 5px;
+    //   }
+    // }
     .buy-now {
       &:hover {
-        background-image: none !important;
-        background-color: $primary !important;
-        box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+        // background-image: none !important;
+        // background-color: $primary !important;
+        // box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
       }
     }
   }
-  .eco {
-    .pricing-header {
-      background-color: $eco;
-    }
-    .price-circle {
-      border: 10px solid $eco;
-      transition: all 0.4s;
-    }
-    &:hover {
-      .price-circle {
-        border-width: 5px;
-      }
-    }
-    .buy-now {
-      &:hover {
-        background-image: none !important;
-        background-color: $eco !important;
-        box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-      }
-    }
-  }
-  .pro {
-    .pricing-header {
-      background-color: $pro;
-    }
-    .price-circle {
-      border: 10px solid $pro;
-      transition: all 0.4s;
-    }
-    &:hover {
-      .price-circle {
-        border-width: 5px;
-      }
-    }
-    .buy-now {
-      &:hover {
-        background-image: none !important;
-        background-color: $pro !important;
-        box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-      }
-    }
-  }
-  .business {
-    .pricing-header {
-      background-color: $business;
-    }
-    .price-circle {
-      border: 10px solid $business;
-      transition: all 0.4s;
-    }
-    &:hover {
-      .price-circle {
-        border-width: 5px;
-      }
-    }
-    .buy-now {
-      &:hover {
-        background-image: none !important;
-        background-color: $business !important;
-        box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-      }
-    }
-  }
+  // .eco {
+  //   .pricing-header {
+  //     background-color: $eco;
+  //   }
+  //   .price-circle {
+  //     border: 10px solid $eco;
+  //     transition: all 0.4s;
+  //   }
+  //   &:hover {
+  //     .price-circle {
+  //       border-width: 5px;
+  //     }
+  //   }
+  //   .buy-now {
+  //     &:hover {
+  //       background-image: none !important;
+  //       background-color: $eco !important;
+  //       box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+  //     }
+  //   }
+  // }
+  // .pro {
+  //   .pricing-header {
+  //     background-color: $pro;
+  //   }
+  //   .price-circle {
+  //     border: 10px solid $pro;
+  //     transition: all 0.4s;
+  //   }
+  //   &:hover {
+  //     .price-circle {
+  //       border-width: 5px;
+  //     }
+  //   }
+  //   .buy-now {
+  //     &:hover {
+  //       background-image: none !important;
+  //       background-color: $pro !important;
+  //       box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+  //     }
+  //   }
+  // }
+  // .business {
+  //   .pricing-header {
+  //     background-color: $business;
+  //   }
+  //   .price-circle {
+  //     border: 10px solid $business;
+  //     transition: all 0.4s;
+  //   }
+  //   &:hover {
+  //     .price-circle {
+  //       border-width: 5px;
+  //     }
+  //   }
+  //   .buy-now {
+  //     &:hover {
+  //       background-image: none !important;
+  //       background-color: $business !important;
+  //       box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+  //     }
+  //   }
+  // }
   /* Card Themes - End */
 
   body {
@@ -127,7 +128,6 @@ $primaryColor: #4527a4;
     background-repeat: no-repeat;
     background-position: center center;
     margin-top: 20px;
-    
 
     // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -136,8 +136,8 @@ $primaryColor: #4527a4;
   .container {
     // max-width: 1200px;
     // width: 100%;
-    height: auto;
-    margin: auto;
+    // height: auto;
+    // margin: auto;
     // display: flex;
     // flex-wrap: wrap;
     // justify-content: center;
@@ -164,29 +164,29 @@ $primaryColor: #4527a4;
   }
 
   .pricing-card {
-    @include transition(0.4s, background-color);
-    height: 600px;
-    background-color: white;
-    -moz-border-radius: $radius;
-    -webkit-border-radius: $radius;
-    border-radius: $radius;
+    // @include transition(0.4s, background-color);
+    // height: 600px;
+    // background-color: white;
+    // -moz-border-radius: $radius;
+    // -webkit-border-radius: $radius;
+    // border-radius: $radius;
     position: relative;
     transition: all 0.4s;
-    height: 100%;
+    // height: 100%;
 
     &:hover {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
       transform: scale(1.05);
     }
 
-    .popular {
+    .badge {
       position: absolute;
       top: 0;
       right: 5%;
       width: auto;
       padding: 10px;
-      border-bottom-left-radius: $radius;
-      border-bottom-right-radius: $radius;
+      // border-bottom-left-radius: $radius;
+      // border-bottom-right-radius: $radius;
       // background-color: #eb3b5a;
       // color: white;
       // font-size: 12px;
@@ -196,12 +196,12 @@ $primaryColor: #4527a4;
     .badge-box {
       padding: 0 40px;
       margin-top: 80px;
-      .badge {
+      .discount-badge {
         display: inline-block;
         align-items: center;
         // border: 1px solid $primary;
         padding: 4px 12px;
-        border-radius: 25px;
+        // border-radius: 25px;
         overflow: hidden;
         // color: $primary;
       }
@@ -211,9 +211,9 @@ $primaryColor: #4527a4;
       width: 100%;
       height: 150px;
       position: relative;
-      border-radius: $radius $radius 0 0;
-      -webkit-border-radius: $radius $radius 0 0;
-      -moz-border-radius: $radius $radius 0 0;
+      // border-radius: $radius $radius 0 0;
+      // -webkit-border-radius: $radius $radius 0 0;
+      // -moz-border-radius: $radius $radius 0 0;
       /*border-bottom: 20px solid $primary;*/
       /*
         border-radius: $radius $radius 150px 150px;
@@ -235,7 +235,7 @@ $primaryColor: #4527a4;
         border-radius: 100%;
         left: calc(50% - 60px);
         top: 60%;
-        background-color: white;
+        // background-color: white;
         position: absolute;
         //box-shadow: 1px 3px 5px rgba(0, 0, 0, .4);
         .info {
@@ -255,6 +255,7 @@ $primaryColor: #4527a4;
           }
         }
       }
+      // unknow css
       h2 {
         position: relative;
         top: 40%;
@@ -270,31 +271,30 @@ $primaryColor: #4527a4;
         display: block;
         padding: 15px 0 15px 0;
         margin: 0;
-        border-bottom: 1px solid #f2f2f2;
+        // border-bottom: 1px solid #f2f2f2;
       }
     }
     .buy-button-box {
       width: 100%;
-      float: left;
+      // float: left;
       margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: end;
-      padding-bottom: 20px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: end;
+      padding-bottom: 30px;
 
       .buy-now {
         text-decoration: none;
-        color: white;
-        padding: 10px 30px;
-        border-radius: $radius;
-        background-image: $body-background;
-        margin-top: 20px;
+
+        // color: white;
+        // padding: 10px 30px;
+        // border-radius: $radius;
+        // background-image: $body-background;
+        // margin-top: 20px;
       }
     }
   }
 
-  .bBlocksPricingTable {
-  }
 
   .icon {
     font-style: inherit;

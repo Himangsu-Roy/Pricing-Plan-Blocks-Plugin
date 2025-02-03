@@ -1,6 +1,10 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss (1) ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
 .wp-block-b-blocks-pricing-table {
   @import url("https://fonts.googleapis.com/css?family=Montserrat");
   /* Body */
@@ -18,61 +22,7 @@
   background-color: #4b7bec;
 }
 .wp-block-b-blocks-pricing-table .basic .price-circle {
-  border: 10px solid #4b7bec;
   transition: all 0.4s;
-}
-.wp-block-b-blocks-pricing-table .basic:hover .price-circle {
-  border-width: 5px;
-}
-.wp-block-b-blocks-pricing-table .basic .buy-now:hover {
-  background-image: none !important;
-  background-color: #4b7bec !important;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-}
-.wp-block-b-blocks-pricing-table .eco .pricing-header {
-  background-color: #f7b731;
-}
-.wp-block-b-blocks-pricing-table .eco .price-circle {
-  border: 10px solid #f7b731;
-  transition: all 0.4s;
-}
-.wp-block-b-blocks-pricing-table .eco:hover .price-circle {
-  border-width: 5px;
-}
-.wp-block-b-blocks-pricing-table .eco .buy-now:hover {
-  background-image: none !important;
-  background-color: #f7b731 !important;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-}
-.wp-block-b-blocks-pricing-table .pro .pricing-header {
-  background-color: #26de81;
-}
-.wp-block-b-blocks-pricing-table .pro .price-circle {
-  border: 10px solid #26de81;
-  transition: all 0.4s;
-}
-.wp-block-b-blocks-pricing-table .pro:hover .price-circle {
-  border-width: 5px;
-}
-.wp-block-b-blocks-pricing-table .pro .buy-now:hover {
-  background-image: none !important;
-  background-color: #26de81 !important;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-}
-.wp-block-b-blocks-pricing-table .business .pricing-header {
-  background-color: #a55eea;
-}
-.wp-block-b-blocks-pricing-table .business .price-circle {
-  border: 10px solid #a55eea;
-  transition: all 0.4s;
-}
-.wp-block-b-blocks-pricing-table .business:hover .price-circle {
-  border-width: 5px;
-}
-.wp-block-b-blocks-pricing-table .business .buy-now:hover {
-  background-image: none !important;
-  background-color: #a55eea !important;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
 }
 .wp-block-b-blocks-pricing-table body {
   background-image: url(https://pngimage.net/wp-content/uploads/2018/06/flat-design-background-png-3.png);
@@ -82,8 +32,6 @@
   margin-top: 20px;
 }
 .wp-block-b-blocks-pricing-table .container {
-  height: auto;
-  margin: auto;
   text-align: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -106,46 +54,34 @@
   }
 }
 .wp-block-b-blocks-pricing-table .pricing-card {
-  transition: 0.4s background-color ease;
-  height: 600px;
-  background-color: white;
-  border-radius: 20px;
   position: relative;
   transition: all 0.4s;
-  height: 100%;
 }
 .wp-block-b-blocks-pricing-table .pricing-card:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
 }
-.wp-block-b-blocks-pricing-table .pricing-card .popular {
+.wp-block-b-blocks-pricing-table .pricing-card .badge {
   position: absolute;
   top: 0;
   right: 5%;
   width: auto;
   padding: 10px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   z-index: 1;
 }
 .wp-block-b-blocks-pricing-table .pricing-card .badge-box {
   padding: 0 40px;
   margin-top: 80px;
 }
-.wp-block-b-blocks-pricing-table .pricing-card .badge-box .badge {
+.wp-block-b-blocks-pricing-table .pricing-card .badge-box .discount-badge {
   display: inline-block;
   align-items: center;
   padding: 4px 12px;
-  border-radius: 25px;
   overflow: hidden;
 }
 .wp-block-b-blocks-pricing-table .pricing-card .pricing-header {
   width: 100%;
   height: 150px;
   position: relative;
-  border-radius: 20px 20px 0 0;
-  -webkit-border-radius: 20px 20px 0 0;
-  -moz-border-radius: 20px 20px 0 0;
   /*border-bottom: 20px solid $primary;*/
   /*
     border-radius: $radius $radius 150px 150px;
@@ -164,7 +100,6 @@
   border-radius: 100%;
   left: calc(50% - 60px);
   top: 60%;
-  background-color: white;
   position: absolute;
 }
 .wp-block-b-blocks-pricing-table .pricing-card .pricing-header .price-circle .info {
@@ -188,24 +123,14 @@
   display: block;
   padding: 15px 0 15px 0;
   margin: 0;
-  border-bottom: 1px solid #f2f2f2;
 }
 .wp-block-b-blocks-pricing-table .pricing-card .buy-button-box {
   width: 100%;
-  float: left;
   margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 .wp-block-b-blocks-pricing-table .pricing-card .buy-button-box .buy-now {
   text-decoration: none;
-  color: white;
-  padding: 10px 30px;
-  border-radius: 20px;
-  background-image: linear-gradient(to left, #a55eea, #45aaf2);
-  margin-top: 20px;
 }
 .wp-block-b-blocks-pricing-table .icon {
   font-style: inherit;

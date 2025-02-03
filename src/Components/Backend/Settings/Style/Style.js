@@ -1,23 +1,92 @@
 import { __ } from "@wordpress/i18n";
-import { __experimentalGrid as Grid, PanelBody } from "@wordpress/components";
+import {
+  __experimentalGrid as Grid,
+  PanelBody,
+  RangeControl,
+} from "@wordpress/components";
 import {
   ColorControl,
   ColorsControl,
+  HexColorControl,
   ShadowControl,
   Typography,
+  __experimentalDivider as Divider,
 } from "../../../../../../bpl-tools/Components";
 import { updateData } from "../../../../utils/functions";
 
 const Style = ({ attributes, setAttributes }) => {
   const { plans } = attributes;
-  console.log(plans, "typography");
+
+  // const updateTypography = (index, key, value) => {
+  //   const updatedPlansTypo = [...plans];
+  //   updatedPlansTypo[index].typography[key] = value;
+
+  //   setAttributes({ plans: updatedPlansTypo });
+  // };
+
+  // const updateTypography = (index, key, value) => {
+  //   const updatedPlansTypo = [...plans];
+  //   const updatedTypography = { ...updatedPlansTypo[index].typography };
+  //   updatedTypography[key] = value;
+  //   updatedPlansTypo[index] = {
+  //     ...updatedPlansTypo[index],
+  //     typography: updatedTypography,
+  //   };
+
+  //   setAttributes({ plans: updatedPlansTypo });
+  // };
+
+  const updateTypography = (index, key, value) => {
+    const updatedPlans = [...plans];
+    const updatedTypography = { ...updatedPlans[index].typography };
+
+    updatedTypography[key] = value;
+
+    updatedPlans[index] = {
+      ...updatedPlans[index],
+      typography: updatedTypography,
+    };
+
+    setAttributes({ plans: updatedPlans });
+  };
+
+  const updateShadow = (index, key, value) => {
+    const updatedPlans = [...plans];
+    const updatedShadow = { ...updatedPlans[index].shadow };
+
+    updatedShadow[key] = value;
+
+    updatedPlans[index] = {
+      ...updatedPlans[index],
+      shadow: updatedShadow,
+    };
+
+    setAttributes({ plans: updatedPlans });
+  };
 
   return (
     <>
       {plans?.map((plan, index) => {
-        const { shadow } = plan;
-        const { cardShadow, buttonShadow, popularShadow } = shadow;
-        console.log(cardShadow, "card shadow");
+        const {
+          shadow,
+          typography,
+          cardBorderRadius,
+          buttonBorderRadius,
+          gap,
+          saveRadius,
+        } = plan;
+        const { cardShadow, buttonShadow, badgeShadow } = shadow;
+        const {
+          planTitle,
+          currencySymbol,
+          money,
+          duration,
+          discountBadge,
+          featureList,
+          button,
+          badge,
+        } = typography;
+
         return (
           <PanelBody
             key={index}
@@ -32,44 +101,107 @@ const Style = ({ attributes, setAttributes }) => {
             >
               <Typography
                 label={__("Plan Title Typography", "b-blocks")}
-                value={""}
-                onChange={(val) => {
-                  console.log(val);
-                }}
-                defaults={{ fontSize: 16, lineHeight: 1 }}
+                value={planTitle}
+                // value={plans[index].typography.planTitle.fontSize.desktop}
+                onChange={(value) =>
+                  updateTypography(index, "planTitle", value)
+                }
               />
 
               <Typography
                 label={__("Price Title Typography", "b-blocks")}
-                value={""}
+                value={money}
                 onChange={(val) => {
-                  console.log(val);
+                  // setAttributes({
+                  //   plans: updateData(plans, val, index, "typography", "money"),
+                  // });
+                  updateTypography(index, "money", val);
                 }}
-                defaults={{ fontSize: 16, lineHeight: 1 }}
               />
               <Typography
                 label={__("Currency Symbol Typography", "b-blocks")}
-                value={""}
+                value={currencySymbol}
                 onChange={(val) => {
-                  console.log(val);
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     val,
+                  //     index,
+                  //     "typography",
+                  //     "dollar"
+                  //   ),
+                  // });
+                  updateTypography(index, "currencySymbol", val);
                 }}
-                defaults={{ fontSize: 16, lineHeight: 1 }}
               />
               <Typography
                 label={__("Duration Typography", "b-blocks")}
-                value={""}
+                value={duration}
                 onChange={(val) => {
-                  console.log(val);
+                  // setAttributes({
+                  //   plans: updateData(plans, val, index, "typography", "month"),
+                  // });
+                  updateTypography(index, "duration", val);
                 }}
-                defaults={{ fontSize: 16, lineHeight: 1 }}
               />
               <Typography
-                label={__("Popular Typography", "b-blocks")}
-                value={""}
+                label={__("Discount Badge Typography", "b-blocks")}
+                value={discountBadge}
                 onChange={(val) => {
-                  console.log(val);
+                  // setAttributes({
+                  //   plans: updateData(plans, val, index, "typography", "month"),
+                  // });
+                  updateTypography(index, "discountBadge", val);
                 }}
-                defaults={{ fontSize: 16, lineHeight: 1 }}
+              />
+
+              <Typography
+                label={__("Badge Typography", "b-blocks")}
+                value={badge}
+                onChange={(val) => {
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     val,
+                  //     index,
+                  //     "typography",
+                  //     "popular"
+                  //   ),
+                  // });
+                  updateTypography(index, "badge", val);
+                }}
+              />
+              <Typography
+                label={__(" Features List Typography", "b-blocks")}
+                value={featureList}
+                onChange={(val) => {
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     val,
+                  //     index,
+                  //     "typography",
+                  //     "featureList"
+                  //   ),
+                  // });
+                  updateTypography(index, "featureList", val);
+                }}
+              />
+              <Typography
+                label={__(" Button Typography", "b-blocks")}
+                value={button}
+                onChange={(val) => {
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     val,
+                  //     index,
+                  //     "typography",
+                  //     "button"
+                  //   ),
+                  // });
+                  updateTypography(index, "button", val);
+                }}
               />
             </PanelBody>
             <PanelBody
@@ -78,21 +210,53 @@ const Style = ({ attributes, setAttributes }) => {
               initialOpen={false}
             >
               <ColorControl
-                label={__("Card Background Color")}
-                value={plan.backgroundColor}
+                label={__("Card Header Background Color")}
+                value={plan.cardHeaderBackgroundColor}
                 onChange={(newColor) =>
                   setAttributes({
                     plans: updateData(
                       plans,
                       newColor,
                       index,
-                      "backgroundColor"
+                      "cardHeaderBackgroundColor"
                     ),
                   })
                 }
-                defaultColor="#ffffff"
+                defaultColor="#4B7BEC"
               />
-              <ColorControl
+
+              <Divider />
+              
+              <HexColorControl
+                label={__("Card Body Background Color")}
+                value={plan.cardBodyBackgroundColor}
+                onChange={(newColor) =>
+                  setAttributes({
+                    plans: updateData(
+                      plans,
+                      newColor,
+                      index,
+                      "cardBodyBackgroundColor"
+                    ),
+                  })
+                }
+                // defaultColor="#fff"
+              />
+
+              <Divider/>
+
+              <HexColorControl
+                label={__("Discount Color")}
+                value={plan.discountColor}
+                onChange={(newColor) =>
+                  setAttributes({
+                    plans: updateData(plans, newColor, index, "discountColor"),
+                  })
+                }
+                defaultColor="#4b7bec"
+                disableAlpha={true}
+              />
+              {/* <ColorControl
                 label={__("Button Background Color")}
                 value={plan.buttonBg}
                 onChange={(newColor) =>
@@ -101,8 +265,24 @@ const Style = ({ attributes, setAttributes }) => {
                   })
                 }
                 defaultColor="#ffffff"
+              /> */}
+              <ColorsControl
+                label={__("Button Gradient Background Color")}
+                value={plan.buttonBg}
+                onChange={(newColor) => {
+                  console.log(newColor, "new color");
+                  setAttributes({
+                    plans: updateData(plans, newColor, index, "buttonBg"),
+                  });
+                }}
+                defaults={{
+                  color: "#333",
+                  bgType: "solid",
+                  bg: "",
+                  gradient: "linear-gradient(to left, #a55eea, #45aaf2)",
+                }}
               />
-              <ColorControl
+              <HexColorControl
                 label={__("Button Hover Background Color")}
                 value={plan.buttonHoverBg}
                 onChange={(newColor) =>
@@ -113,27 +293,32 @@ const Style = ({ attributes, setAttributes }) => {
                 defaultColor="#ffffff"
               />
 
-              <ColorControl
+              <HexColorControl
                 label={__("Button Text Color")}
-                value={plan.buttonHoverColor}
+                value={plan.buttonColor}
                 onChange={(newColor) =>
                   setAttributes({
-                    plans: updateData(
-                      plans,
-                      newColor,
-                      index,
-                      "buttonHoverColor"
-                    ),
+                    plans: updateData(plans, newColor, index, "buttonColor"),
+                  })
+                }
+              />
+
+              <ColorControl
+                label={__("Badge Background Color")}
+                value={plan.badgeBg}
+                onChange={(newColor) =>
+                  setAttributes({
+                    plans: updateData(plans, newColor, index, "badgeBg"),
                   })
                 }
                 defaultColor="#ffffff"
               />
-              <ColorControl
-                label={__("Popular Background Color")}
-                value={plan.popularBg}
+              <HexColorControl
+                label={__("Badge Text Color")}
+                value={plan.badgeColor}
                 onChange={(newColor) =>
                   setAttributes({
-                    plans: updateData(plans, newColor, index, "popularBg"),
+                    plans: updateData(plans, newColor, index, "badgeColor"),
                   })
                 }
                 defaultColor="#ffffff"
@@ -148,45 +333,49 @@ const Style = ({ attributes, setAttributes }) => {
                 label="Card Shadow"
                 value={cardShadow}
                 onChange={(newShadow) => {
-                  setAttributes({
-                    plans: updateData(
-                      plans,
-                      index,
-                      newShadow,
-                      "shadow",
-                      "cardShadow"
-                    ),
-                  });
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     newShadow,
+                  //     index,
+                  //     "shadow",
+                  //     "cardShadow"
+
+                  //   ),
+                  // });
+                  updateShadow(index, "cardShadow", newShadow);
                 }}
                 type="cardShadow"
+                // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
                 defaults={[
                   {
                     hOffset: "0px",
-                    vOffset: "0px",
-                    blur: "0px",
+                    vOffset: "4px",
+                    blur: "8px",
                     spreed: "0px",
-                    color: "#000000",
+                    color: "rgba(0, 0, 0, 0.4)",
                     isInset: false,
                   },
                 ]}
               />
-              {/* <ShadowControl
+              <ShadowControl
                 label="Button Shadow"
                 value={buttonShadow}
                 onChange={(newShadow) => {
-                  setAttributes({
-                    plans: updateData(
-                      plans,
-                      {
-                        ...plans[index],
-                        shadow: {
-                          ...plans[index].shadow,
-                          buttonShadow: newShadow,
-                        },
-                      },
-                      index
-                    ),
-                  });
+                  // setAttributes({
+                  //   plans: updateData(
+                  //     plans,
+                  //     {
+                  //       ...plans[index],
+                  //       shadow: {
+                  //         ...plans[index].shadow,
+                  //         buttonShadow: newShadow,
+                  //       },
+                  //     },
+                  //     index
+                  //   ),
+                  // });
+                  updateShadow(index, "buttonShadow", newShadow);
                 }}
                 type="buttonShadow"
                 defaults={[
@@ -199,27 +388,28 @@ const Style = ({ attributes, setAttributes }) => {
                     isInset: false,
                   },
                 ]}
-              /> */}
-              {/* {plan.popular && (
+              />
+              {plan.badge && (
                 <ShadowControl
-                  label="Popular Shadow"
-                  value={popularShadow}
+                  label="Badge Shadow"
+                  value={badgeShadow}
                   onChange={(newShadow) => {
-                    setAttributes({
-                      plans: updateData(
-                        plans,
-                        {
-                          ...plans[index],
-                          shadow: {
-                            ...plans[index].shadow,
-                            popularShadow: newShadow,
-                          },
-                        },
-                        index
-                      ),
-                    });
+                    // setAttributes({
+                    //   plans: updateData(
+                    //     plans,
+                    //     {
+                    //       ...plans[index],
+                    //       shadow: {
+                    //         ...plans[index].shadow,
+                    //         badgeShadow: newShadow,
+                    //       },
+                    //     },
+                    //     index
+                    //   ),
+                    // });
+                    updateShadow(index, "badgeShadow", newShadow);
                   }}
-                  type="popularShadow"
+                  type="badgeShadow"
                   defaults={[
                     {
                       hOffset: "0px",
@@ -231,7 +421,68 @@ const Style = ({ attributes, setAttributes }) => {
                     },
                   ]}
                 />
-              )} */}
+              )}
+            </PanelBody>
+
+            <PanelBody
+              className="bPlPanelBody"
+              title={__("Card Layout", "b-blocks")}
+              initialOpen={false}
+            >
+              <RangeControl
+                label={__("Card Radius", "my-block")}
+                value={cardBorderRadius}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(
+                      plans,
+                      newRadius,
+                      index,
+                      "cardBorderRadius"
+                    ),
+                  })
+                }
+                min={0}
+                max={100}
+              />
+              <RangeControl
+                label={__("Badge Radius", "my-block")}
+                value={saveRadius}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(plans, newRadius, index, "saveRadius"),
+                  })
+                }
+                min={0}
+                max={100}
+              />
+              <RangeControl
+                label={__("Button Radius", "my-block")}
+                value={buttonBorderRadius}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(
+                      plans,
+                      newRadius,
+                      index,
+                      "buttonBorderRadius"
+                    ),
+                  })
+                }
+                min={0}
+                max={100}
+              />
+              <RangeControl
+                label={__("Card Between Gap", "my-block")}
+                value={gap}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(plans, newRadius, index, "gap"),
+                  })
+                }
+                min={0}
+                max={100}
+              />
             </PanelBody>
           </PanelBody>
         );

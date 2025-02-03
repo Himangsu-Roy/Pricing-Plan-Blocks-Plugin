@@ -13,7 +13,6 @@ import {
 import { purposeTypeOptions } from "../../../../utils/options";
 import { updateData } from "../../../../utils/functions";
 import { useState } from "@wordpress/element";
-import { Typography } from "../../../../../../bpl-tools/Components";
 
 // import {
 //   Icon,
@@ -24,13 +23,14 @@ import { Typography } from "../../../../../../bpl-tools/Components";
 //   arrowDown,
 // } from "@wordpress/icons";
 
-// updateData("planTitle", value, index, plans, setAttributes)
-
-const General = ({ attributes, setAttributes, selectedFeatureIndex }) => {
+const General = ({
+  attributes,
+  setAttributes,
+  selectedFeatureIndex,
+  device,
+}) => {
   const { plans } = attributes;
   // const [selectedPlanIndex, setSelectedPlanIndex] = useState(null);
-
-  console.log(selectedFeatureIndex, "selectedFeatureIndex");
 
   // Function to delete a plan
   const deletePlan = (index) => {
@@ -51,32 +51,6 @@ const General = ({ attributes, setAttributes, selectedFeatureIndex }) => {
 
   // Function to add a new plan
   const addPlan = () => {
-    const newPlan = {
-      planTitle: "New Plan",
-      price: "0.00",
-      discount: "0%",
-      duration: "monthly",
-      icon: "star",
-      backgroundColor: "#ffffff",
-      buttonBg: "#B1C5A4",
-      buttonColor: "black",
-      buttonHoverBg: "#B1C5A4",
-      buttonHoverColor: "black",
-      features: [
-        { label: "Domain", value: "0" },
-        { label: "Disk Space", value: "0 GB" },
-        { label: "Bandwidth", value: "0 GB" },
-        { label: "Free Domain", value: "0" },
-        { label: "FTP Account", value: "0" },
-      ],
-      currencySymbol: "$",
-      monthLabel: "/ Month",
-      saveLabel: "Save",
-      buyNowLabel: "BUY NOW",
-      buyNowLink: "https://example.com",
-      popular: false,
-    };
-
     const newCard = {
       ...plans[0],
     };
@@ -102,249 +76,238 @@ const General = ({ attributes, setAttributes, selectedFeatureIndex }) => {
   // Function to update a feature in the features array
   const updateFeature = (index, featureIndex, newFeature) => {
     const updatedPlans = [...plans];
-    updatedPlans[index].features[featureIndex] = newFeature; // Update specific feature
+    updatedPlans[index].features[featureIndex] = newFeature;
     setAttributes({ plans: updatedPlans });
   };
 
   // Function to delete a feature from the features array
   const deleteFeature = (index, featureIndex) => {
     const updatedPlans = [...plans];
-    updatedPlans[index].features.splice(featureIndex, 1); // Remove feature from array
+    updatedPlans[index].features.splice(featureIndex, 1);
     setAttributes({ plans: updatedPlans });
   };
 
   const togglePopular = (index) => {
     const updatedPlans = [...plans];
-    updatedPlans[index].popular = !updatedPlans[index].popular; // Toggle the popular flag
+    updatedPlans[index].popular = !updatedPlans[index].popular;
     setAttributes({ plans: updatedPlans });
-    console.log(!updatedPlans[index].popular, "popular");
   };
 
   return (
     <>
-      {plans.map((plan, index) => (
-        <PanelBody
-          key={index}
-          className="bPlPanelBody"
-          title={__(`${plan.planTitle} ${index + 1}`, "b-blocks")}
-          initialOpen={false}
-        >
-          {/* <InputControl
-            label="Plan Title"
-            value={plan.planTitle}
-            onChange={(value) =>
-             
-              updatePlan(index, { planTitle: value })
-            }
-          />
-          <InputControl
-            label="Price"
-            value={plan.price}
-            onChange={(value) =>
-              
-              updatePlan(index, { price: value })
-            }
-          />
-          <InputControl
-            label="Duration"
-            value={plan.duration}
-            onChange={(value) =>
-              
-              updatePlan(index, { duration: value })
-            }
-          />
-          <InputControl
-            label="Plan Icon"
-            value={plan.icon}
-            onChange={(value) =>
-              
-              updatePlan(index, { icon: value })
-            }
-          />
-          <InputControl
-            label="Plan Background Color"
-            value={plan.backgroundColor}
-            onChange={(value) =>
-             
-              updatePlan(index, { backgroundColor: value })
-            }
-          /> */}
-          {/* Plan Settings */}
-          <div className="plan-settings">
-            <TextControl
-              label="Plan Title"
-              value={plan.planTitle}
-              onChange={(value) => updatePlan(index, { planTitle: value })}
-            />
-            <TextControl
-              label="Price"
-              value={plan.price}
-              onChange={(value) => updatePlan(index, { price: value })}
-            />
-            <SelectControl
-              label="Duration"
-              value={plan.duration}
-              options={[
-                { label: "Monthly", value: "monthly" },
-                { label: "Yearly", value: "yearly" },
-              ]}
-              onChange={(value) => updatePlan(index, { duration: value })}
-            />
-            {/* <TextControl
+      {plans.map(
+        (plan, index) => (
+          console.log(plan.popular, "popular"),
+          (
+            <PanelBody
+              key={index}
+              className="bPlPanelBody"
+              title={__(`${plan.planTitle}`, "b-blocks")}
+              initialOpen={false}
+            >
+              {/* Plan Settings */}
+              <div className="plan-settings">
+                <TextControl
+                  label="Plan Title"
+                  value={plan.planTitle}
+                  onChange={(value) => updatePlan(index, { planTitle: value })}
+                />
+                <TextControl
+                  label="Price"
+                  value={plan.price}
+                  onChange={(value) => updatePlan(index, { price: value })}
+                />
+                <SelectControl
+                  label="Duration"
+                  value={plan.monthLabel}
+                  options={[
+                    { label: "Monthly", value: "/ Month" },
+                    { label: "Yearly", value: "/ Year" },
+                  ]}
+                  onChange={(value) => updatePlan(index, { monthLabel: value })}
+                />
+                {/* <TextControl
               label="Plan Icon"
               value={plan.icon}
               onChange={(value) => updatePlan(index, { icon: value })}
             /> */}
-            <TextControl
-              label="Plan Background Color"
-              value={plan.backgroundColor}
-              onChange={(value) =>
-                updatePlan(index, { backgroundColor: value })
-              }
-            />
-
-            {/* Render Feature Settings */}
-            {plan.features.map((feature, featureIndex) => (
-              <div key={featureIndex}>
                 <TextControl
-                  label={`Feature Name ${featureIndex + 1}`}
-                  value={feature.label}
+                  label="Save Label"
+                  value={plan.discountLabel}
                   onChange={(value) =>
-                    updateFeature(index, featureIndex, {
-                      ...feature,
-                      label: value,
-                    })
+                    updatePlan(index, { discountLabel: value })
                   }
                 />
-                <TextControl
-                  label={`Feature Value ${featureIndex + 1}`}
-                  value={feature.value}
-                  onChange={(value) =>
-                    updateFeature(index, featureIndex, {
-                      ...feature,
-                      value: value,
-                    })
-                  }
-                />
-              </div>
-            ))}
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              {/* Add Extra Feature Button */}
-              <Button
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-                variant="primary"
-                onClick={() => addExtraFeature(index)}
-              >
-                Add Extra Feature
-              </Button>
+                {/* Render Feature Settings */}
+                {plan.features.map((feature, featureIndex) => (
+                  <div key={featureIndex}>
+                    <TextControl
+                      label={`Feature Name ${featureIndex + 1}`}
+                      value={feature.label}
+                      onChange={(value) =>
+                        updateFeature(index, featureIndex, {
+                          ...feature,
+                          label: value,
+                        })
+                      }
+                    />
+                    <TextControl
+                      label={`Feature ${featureIndex + 1}`}
+                      value={feature.value}
+                      onChange={(value) =>
+                        updateFeature(index, featureIndex, {
+                          ...feature,
+                          value: value,
+                        })
+                      }
+                    />
+                  </div>
+                ))}
 
-              {/* Delete Feature button */}
-              {/* <Button
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  {/* Add Extra Feature Button */}
+                  <Button
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                    variant="primary"
+                    onClick={() => addExtraFeature(index)}
+                  >
+                    Add Extra Feature
+                  </Button>
+
+                  {/* Delete Feature button */}
+                  {/* <Button
               isDestructive
               onClick={() => deleteFeature(index, selectedFeatureIndex)}
             >
               Delete Feature
             </Button> */}
 
-              {
-                // Check if selectedFeatureIndex is not null and matches the current plan index
-                selectedFeatureIndex !== null && (
-                  <Button
-                    variant="primary"
-                    isDestructive
-                    // onClick={() => deleteFeature(index, selectedFeatureIndex)}
-                    onClick={() => {
-                      const deleteFeature = plan.features.filter(
-                        (feature, featureIndex) =>
-                          featureIndex !== selectedFeatureIndex
-                      );
-                      // updatePlan(selectedFeatureIndex, {
-                      //   features: deleteFeature,
-                      // });
-                      setAttributes({
-                        plans: [
-                          ...plans.slice(0, index),
-                          { ...plan, features: deleteFeature },
-                          ...plans.slice(index + 1),
-                        ],
-                      });
-                    }}
-                  >
-                    Delete Feature
-                  </Button>
-                )
-              }
-            </div>
+                  {
+                    // Check if selectedFeatureIndex is not null and matches the current plan index
+                    selectedFeatureIndex !== null && (
+                      <Button
+                        variant="primary"
+                        isDestructive
+                        // onClick={() => deleteFeature(index, selectedFeatureIndex)}
+                        onClick={() => {
+                          const deleteFeature = plan.features.filter(
+                            (feature, featureIndex) =>
+                              featureIndex !== selectedFeatureIndex
+                          );
+                          // updatePlan(selectedFeatureIndex, {
+                          //   features: deleteFeature,
+                          // });
+                          setAttributes({
+                            plans: [
+                              ...plans.slice(0, index),
+                              { ...plan, features: deleteFeature },
+                              ...plans.slice(index + 1),
+                            ],
+                          });
+                        }}
+                      >
+                        Delete Feature
+                      </Button>
+                    )
+                  }
+                </div>
 
-            <Spacer />
-            {/* Buy Now link */}
-            <InputControl
-              label={`${plan.buyNowLabel} Link`}
-              value={plan.buyNowLink}
-              onChange={(value) => updatePlan(index, { buyNowLink: value })}
-            />
-          </div>
+                <Spacer />
+                {/* Buy Now link */}
+                <InputControl
+                  label={`${plan.buyNowLabel} Link`}
+                  value={plan.buyNowLink}
+                  onChange={(value) => updatePlan(index, { buyNowLink: value })}
+                />
+              </div>
 
-          <Spacer />
+              <Spacer />
 
-          {/* Is Popular */}
-          <CheckboxControl
-            label="Is Popular"
-            checked={plan.popular}
-            onChange={() => togglePopular(index)}
-          />
+              <InputControl
+                label="Buy Now Label"
+                value={plan.buyNowLabel}
+                onChange={(value) => updatePlan(index, { buyNowLabel: value })}
+              />
 
-          {/* Buttons */}
+              <Spacer />
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <Button
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-              }}
-              isDestructive
-              variant="primary"
-              onClick={() => deletePlan(index)}
-            >
-              Delete Plan
-            </Button>
-            <Button
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-              }}
-              variant="primary"
-              isSecondary
-              onClick={() => duplicatePlan(plan, index)}
-            >
-              Duplicate Plan
-            </Button>
-          </div>
-        </PanelBody>
-      ))}
+              {/* Badge Lavel */}
+              <InputControl
+                label="Badge Label"
+                value={plan.badgeLabel}
+                onChange={(value) => updatePlan(index, { badgeLabel: value })}
+              />
+
+              <Spacer />
+
+              {/* Is Popular */}
+              <CheckboxControl
+                label={`Is ${plan.badgeLabel} `}
+                checked={plan.badge}
+                onChange={() => {
+                  setAttributes({
+                    plans: [
+                      ...plans.slice(0, index),
+                      { ...plan, badge: !plan.badge },
+                      ...plans.slice(index + 1),
+                    ],
+                  });
+                }}
+              />
+
+              {/* Buttons */}
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <Button
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                  isDestructive
+                  variant="primary"
+                  onClick={() => deletePlan(index)}
+                >
+                  Delete Plan
+                </Button>
+                <Button
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                  variant="primary"
+                  isSecondary
+                  onClick={() => duplicatePlan(plan, index)}
+                >
+                  Duplicate Plan
+                </Button>
+              </div>
+            </PanelBody>
+          )
+        )
+      )}
 
       {/* Add Plan */}
 

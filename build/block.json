@@ -11,6 +11,10 @@
   ],
   "textdomain": "b-blocks",
   "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
     "alignment": {
       "type": "string",
       "default": "center"
@@ -30,10 +34,13 @@
           "price": "6.95",
           "discount": "35%",
           "icon": "star",
-          "buttonBg": "#B1C5A4",
-          "buttonColor": "black",
-          "buttonHoverBg": "#B1C5A4",
-          "buttonHoverColor": "black",
+          "buttonBg": {
+            "color": "#4B7BEC",
+            "gradient": "linear-gradient(to left, #a55eea, #45aaf2)"
+          },
+          "buttonColor": "#fff",
+          "buttonHoverBg": "#4B7BEC",
+          "buttonHoverColor": "#fff",
           "features": [
             {
               "label": "Domain",
@@ -58,52 +65,60 @@
           ],
           "currencySymbol": "$",
           "monthLabel": "/ Month",
-          "saveLabel": "Save",
+          "discountLabel": "Save 35%",
           "buyNowLabel": "BUY NOW",
           "buyNowLink": "https://example.com",
-          "backgroundColor": "#B1C5A4",
-          "popular": false,
-          "popularLabel": "POPULAR",
-          "popularColor": "#B1C5A4",
-          "popularBg": "black",
+          "cardHeaderBackgroundColor": "#4B7BEC",
+          "cardBodyBackgroundColor": "#fff",
+          "discountColor": "#4b7bec",
+          "badge": false,
+          "badgeLabel": "POPULAR",
+          "badgeColor": "#fff",
+          "badgeBg": "#eb3b5a",
+          "priceCircleBg": "#fff",
+          "badgeRadius": 20,
+          "cardBorderRadius": 20,
+          "buttonBorderRadius": 20,
+          "saveRadius": 25,
+          "gap": 8,
           "shadow": {
             "cardShadow": [
               {
                 "hOffset": "0px",
-                "vOffset": "0px",
-                "blur": "0px",
+                "vOffset": "4px",
+                "blur": "8px",
                 "spreed": "0px",
-                "color": "#000000",
+                "color": "rgba(0, 0, 0, 0.4)",
                 "isInset": false
               }
             ],
             "buttonShadow": [
               {
                 "hOffset": "0px",
-                "vOffset": "0px",
-                "blur": "0px",
+                "vOffset": "4px",
+                "blur": "8px",
                 "spreed": "0px",
-                "color": "#000000",
+                "color": "rgba(0, 0, 0, 0.4)",
                 "isInset": false
               }
             ],
-            "popularShadow": [
+            "badgeShadow": [
               {
                 "hOffset": "0px",
-                "vOffset": "0px",
-                "blur": "0px",
+                "vOffset": "4px",
+                "blur": "8px",
                 "spreed": "0px",
-                "color": "#000000",
+                "color": "rgba(0, 0, 0, 0.4)",
                 "isInset": false
               }
             ]
           },
           "typography": {
             "planTitle": {
-              "fontWeight": "normal",
-              "fontFamily": "Arial",
-              "fontStyle": "normal",
-              "fontVariant": "normal",
+              "fontWeight": "",
+              "fontFamily": "",
+              "fontStyle": "",
+              "fontVariant": "",
               "fontSize": {
                 "desktop": 24,
                 "tablet": 20,
@@ -117,125 +132,125 @@
               "backgroundColor": "transparent",
               "alignment": "center"
             },
-            "dollar": {
-              "fontWeight": "normal",
-              "fontFamily": "Arial",
+            "currencySymbol": {
+              "fontWeight": "bold",
+              "fontFamily": "",
               "fontStyle": "normal",
               "fontVariant": "normal",
               "fontSize": {
-                "desktop": 48,
-                "tablet": 36,
-                "mobile": 28
+                "desktop": 18,
+                "tablet": 16,
+                "mobile": 16
               },
               "textTransform": "none",
               "textDecoration": "none",
-              "letterSpacing": "1px",
-              "lineHeight": "120%",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
               "color": "#333333",
               "backgroundColor": "transparent",
               "alignment": "center"
             },
             "money": {
-              "fontWeight": "600",
-              "fontFamily": "Roboto",
-              "fontStyle": "italic",
+              "fontWeight": "bold",
+              "fontFamily": "",
+              "fontStyle": "none",
               "fontSize": {
-                "desktop": 40,
-                "tablet": 30,
-                "mobile": 20
+                "desktop": 28,
+                "tablet": 20,
+                "mobile": 16
               },
-              "textTransform": "capitalize",
-              "textDecoration": "line-through",
-              "letterSpacing": "-0.5px",
-              "lineHeight": "90%",
-              "color": "#ff0000",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "right"
+              "alignment": "center"
             },
-            "month": {
-              "fontWeight": "lighter",
-              "fontFamily": "Verdana",
+            "duration": {
+              "fontWeight": "bold",
+              "fontFamily": "",
               "fontStyle": "normal",
               "fontSize": {
-                "desktop": 30,
-                "tablet": 24,
-                "mobile": 18
+                "desktop": 12,
+                "tablet": 12,
+                "mobile": 12
               },
-              "textTransform": "lowercase",
-              "textDecoration": "overline",
-              "letterSpacing": "0.2px",
-              "lineHeight": "110%",
-              "color": "#00ff00",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "left"
+              "alignment": "center"
             },
-            "save": {
-              "fontWeight": "lighter",
-              "fontFamily": "Verdana",
+            "discountBadge": {
+              "fontWeight": "",
+              "fontFamily": "",
               "fontStyle": "normal",
               "fontSize": {
-                "desktop": 30,
-                "tablet": 24,
-                "mobile": 18
+                "desktop": 16,
+                "tablet": 15,
+                "mobile": 14
               },
-              "textTransform": "lowercase",
-              "textDecoration": "overline",
-              "letterSpacing": "0.2px",
-              "lineHeight": "110%",
-              "color": "#00ff00",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "left"
+              "alignment": "center"
             },
             "featureList": {
-              "fontWeight": "lighter",
-              "fontFamily": "Verdana",
+              "fontWeight": "",
+              "fontFamily": "",
               "fontStyle": "normal",
               "fontSize": {
-                "desktop": 30,
+                "desktop": 16,
                 "tablet": 24,
                 "mobile": 18
               },
-              "textTransform": "lowercase",
-              "textDecoration": "overline",
-              "letterSpacing": "0.2px",
-              "lineHeight": "110%",
-              "color": "#00ff00",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "left"
+              "alignment": "center"
             },
             "button": {
-              "fontWeight": "lighter",
-              "fontFamily": "Verdana",
-              "fontStyle": "normal",
+              "fontWeight": "",
+              "fontFamily": "",
+              "fontStyle": "",
               "fontSize": {
-                "desktop": 30,
-                "tablet": 24,
-                "mobile": 18
+                "desktop": 15,
+                "tablet": 15,
+                "mobile": 14
               },
-              "textTransform": "lowercase",
-              "textDecoration": "overline",
-              "letterSpacing": "0.2px",
-              "lineHeight": "110%",
-              "color": "#00ff00",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "",
+              "lineHeight": "100%",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "left"
+              "alignment": "center"
             },
-            "popular": {
-              "fontWeight": "lighter",
-              "fontFamily": "Verdana",
+            "badge": {
+              "fontWeight": "",
+              "fontFamily": "",
               "fontStyle": "normal",
               "fontSize": {
-                "desktop": 30,
+                "desktop": 12,
                 "tablet": 24,
                 "mobile": 18
               },
-              "textTransform": "lowercase",
-              "textDecoration": "overline",
-              "letterSpacing": "0.2px",
-              "lineHeight": "110%",
-              "color": "#00ff00",
+              "textTransform": "none",
+              "textDecoration": "none",
+              "letterSpacing": "0px",
+              "lineHeight": "100%",
+              "color": "#333333",
               "backgroundColor": "transparent",
-              "alignment": "left"
+              "alignment": "center"
             }
           }
         }

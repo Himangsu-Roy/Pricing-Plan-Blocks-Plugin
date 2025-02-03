@@ -17,6 +17,12 @@ const PricingTable = ({
     setAttributes({ plans: updatedPlans });
   };
 
+  const toggleBadge = (index, value) => {
+    const updatedPlans = [...plans];
+    updatedPlans[index] = { ...updatedPlans[index], badge: value };
+    setAttributes({ plans: updatedPlans });
+  };
+
   //
   const handlePreviewClick = (e) => {
     e.preventDefault();
@@ -36,24 +42,45 @@ const PricingTable = ({
 
   return (
     <>
-      <body>
+      <body style={{ background: "#f0f0f1" }}>
         <div className="container">
           {plans.map((plan, index) => (
             <div key={index} className="column">
               <div
-                className="pricing-card basic"
+                className={`pricing-card pricing-card-${index}  basic`}
                 // style={{ backgroundColor: plan.backgroundColor }}
               >
-                {plan.popular && <div className="popular">POPULAR</div>}
+                {plan.badge && (
+                  <RichText
+                    tagName="div"
+                    className={`badge badge-${index}`}
+                    value={plan.badgeLabel}
+                    onChange={(value) => {
+                      updatePlan(index, { badgeLabel: value });
+                      if (value.length === 0) {
+                        toggleBadge(index, true);
+                      }
+                    }}
+                    placeholder={__("Badge", "b-blocks")}
+                  />
+                )}
 
-                <div className="pricing-header">
+                {/* <RichText
+                  tagName="div"
+                  className="badge"
+                  value={plan.badge}
+                  onChange={(value) => updatePlan(index, { badge: value })}
+                  placeholder={__("Badge", "b-blocks")}
+                /> */}
+                {/* <div className="popular">POPULAR</div> */}
+                <div className={`pricing-header pricing-header-${index}`}>
                   {/* <span className="plan-title">
                     {plan.planTitle}
                     <span className="plan-icon">{plan.icon}</span>
                   </span> */}
                   <RichText
                     tagName="span"
-                    className="plan-title"
+                    className={`plan-title plan-title-${index}`}
                     value={plan.planTitle}
                     onChange={(value) =>
                       updatePlan(index, { planTitle: value })
@@ -62,7 +89,7 @@ const PricingTable = ({
                   />
                   {/* <span className="plan-icon">{plan.icon}</span> */}
 
-                  <div className="price-circle">
+                  <div className={`price-circle price-circle-${index}`}>
                     <span className="price-title">
                       {/* <small>{plan.currencySymbol}</small> */}
                       <RichText
@@ -93,38 +120,36 @@ const PricingTable = ({
                     <RichText
                       tagName="span"
                       className="info"
-                      value={plan.duration === "monthly" ? "/ Month" : "/ Year"}
+                      value={plan.monthLabel}
                       onChange={(value) =>
-                        updatePlan(index, { duration: value })
+                        updatePlan(index, { monthLabel: value })
                       }
                       placeholder={__("Duration", "b-blocks")}
                     />
                   </div>
                 </div>
-
                 <div className="badge-box">
-                  <div className="badge">
+                  <div className={`discount-badge discount-badge-${index}`}>
                     <RichText
                       tagName="span"
-                      value={plan.saveLabel}
+                      value={plan.discountLabel}
                       onChange={(value) =>
-                        updatePlan(index, { saveLabel: value })
+                        updatePlan(index, { discountLabel: value })
                       }
-                      placeholder={__("Save Label", "b-blocks")}
+                      placeholder={__("Discount Label", "b-blocks")}
                     />
-
-                    <RichText
+                    <span>&nbsp;</span>
+                    {/* <RichText
                       tagName="span"
                       value={plan.discount}
                       onChange={(value) =>
                         updatePlan(index, { discount: value })
                       }
                       placeholder={__("Discount", "b-blocks")}
-                    />
+                    /> */}
                   </div>
                 </div>
-
-                <ul className="feature-list">
+                <ul className={`feature-list feature-list-${index}`}>
                   {plan.features.map((feature, featureIndex) => (
                     <li
                       onClick={() => setSelectedFeatureIndex(featureIndex)}
@@ -132,6 +157,7 @@ const PricingTable = ({
                     >
                       {/* <strong>{feature.value}</strong> {feature.label} */}
                       <RichText
+                        className={`feature-value feature-value-${index}`}
                         tagName="strong"
                         value={feature.value}
                         onChange={(value) =>
@@ -145,9 +171,9 @@ const PricingTable = ({
                         }
                         placeholder={__("Feature Value", "b-blocks")}
                       />
-
+                      <span>&nbsp;</span>
                       <RichText
-                        className="feature-label"
+                        className={`feature-label feature-label-${index}`}
                         tagName="span"
                         value={feature.label}
                         onChange={(value) =>
@@ -164,16 +190,16 @@ const PricingTable = ({
                     </li>
                   ))}
                 </ul>
-
                 <div className="buy-button-box">
                   <a
                     href={plan.buyNowLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="buy-now"
+                    className={`buy-now hover-color-${index} buy-now-${index}`}
                     // onClick={handlePreviewClick}
                   >
                     <RichText
+                      className="buttonText"
                       tagName="span"
                       value={plan.buyNowLabel}
                       onChange={(value) =>
@@ -183,7 +209,6 @@ const PricingTable = ({
                     />
                   </a>
                 </div>
-
                 {/* <div>
                   <div className="buy-now-preview">
                     {plan.buyNowLabel}
@@ -196,7 +221,6 @@ const PricingTable = ({
                     onChange={(url) => setAttributes({ buyNowLink: url })}
                   />
                 </div> */}
-
                 {/* <div
                   className="buy-now-preview"
                   onClick={handlePreviewClick}

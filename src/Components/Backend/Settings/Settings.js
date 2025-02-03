@@ -10,7 +10,12 @@ import { generalStyleTabs } from "../../../utils/options";
 import General from "./General/General";
 import Style from "./Style/Style";
 
-const Settings = ({ attributes, setAttributes, selectedFeatureIndex }) => {
+const Settings = ({
+  attributes,
+  setAttributes,
+  selectedFeatureIndex,
+  device,
+}) => {
   const { alignment } = attributes;
 
   return (
@@ -40,6 +45,7 @@ const Settings = ({ attributes, setAttributes, selectedFeatureIndex }) => {
                   attributes={attributes}
                   setAttributes={setAttributes}
                   selectedFeatureIndex={selectedFeatureIndex}
+                  device={device}
                 />
               )}
 
