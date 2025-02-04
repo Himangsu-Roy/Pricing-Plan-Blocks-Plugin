@@ -482,8 +482,9 @@ const Style = ({
       saveRadius,
       gap,
       badgeBg,
-      discountColor
+      discountColor,
       // buttonColor,
+      badgePosition
     } = styles;
     const {
       planTitle,
@@ -741,7 +742,8 @@ const Style = ({
         }
 
 
-        ${Badge} .pricing-card-${index} .badge-${index}{         
+        ${Badge} .pricing-card-${index} .badge-${index}{  
+          right: ${badgePosition}%;       
           color: ${badgeColor};
           box-shadow: ${isInset ? "inset " : ""} ${popularHOffset} ${popularVOffset} ${popularBlur} ${popularSpreed} ${popularColor};
           background-color: ${badgeBg};   

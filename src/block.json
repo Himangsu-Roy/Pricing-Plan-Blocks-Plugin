@@ -39,6 +39,7 @@
             "color": "#4B7BEC",
             "gradient": "linear-gradient(to left, #a55eea, #45aaf2)"
           },
+
           "buttonColor": "#fff",
           "buttonHoverBg": "#4B7BEC",
           "buttonHoverColor": "#fff",
@@ -62,11 +63,12 @@
           "badgeColor": "#fff",
           "badgeBg": "#eb3b5a",
           "priceCircleBg": "#fff",
+          "badgePosition": 5,
           "badgeRadius": 20,
           "cardBorderRadius": 20,
           "buttonBorderRadius": 20,
           "saveRadius": 25,
-          "gap": 8,
+          "gap": 0,
 
           "shadow": {
             "cardShadow": [

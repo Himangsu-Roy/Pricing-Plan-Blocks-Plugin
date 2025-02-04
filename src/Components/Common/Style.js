@@ -62,6 +62,7 @@ const Style = ({ attributes, id, device = "desktop" }) => {
         badgeBg,
         discountColor,
         // buttonColor,
+        badgePosition,
       } = styles;
       const {
         planTitle,
@@ -321,7 +322,8 @@ const Style = ({ attributes, id, device = "desktop" }) => {
         }
 
 
-        ${Badge} .pricing-card-${index} .badge-${index}{         
+        ${Badge} .pricing-card-${index} .badge-${index}{  
+          right: ${badgePosition}%;       
           color: ${badgeColor};
           box-shadow: ${
             isInset ? "inset " : ""

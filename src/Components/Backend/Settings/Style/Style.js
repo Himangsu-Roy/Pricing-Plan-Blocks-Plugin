@@ -3,14 +3,15 @@ import {
   __experimentalGrid as Grid,
   PanelBody,
   RangeControl,
+  __experimentalDivider as Divider,
 } from "@wordpress/components";
 import {
   ColorControl,
   ColorsControl,
+  Gradient,
   HexColorControl,
   ShadowControl,
   Typography,
-  __experimentalDivider as Divider,
 } from "../../../../../../bpl-tools/Components";
 import { updateData } from "../../../../utils/functions";
 
@@ -74,6 +75,9 @@ const Style = ({ attributes, setAttributes }) => {
           buttonBorderRadius,
           gap,
           saveRadius,
+          gradientValue,
+          badgeRadius,
+          badgePosition,
         } = plan;
         const { cardShadow, buttonShadow, badgeShadow } = shadow;
         const {
@@ -122,15 +126,6 @@ const Style = ({ attributes, setAttributes }) => {
                 label={__("Currency Symbol Typography", "b-blocks")}
                 value={currencySymbol}
                 onChange={(val) => {
-                  // setAttributes({
-                  //   plans: updateData(
-                  //     plans,
-                  //     val,
-                  //     index,
-                  //     "typography",
-                  //     "dollar"
-                  //   ),
-                  // });
                   updateTypography(index, "currencySymbol", val);
                 }}
               />
@@ -159,15 +154,6 @@ const Style = ({ attributes, setAttributes }) => {
                 label={__("Badge Typography", "b-blocks")}
                 value={badge}
                 onChange={(val) => {
-                  // setAttributes({
-                  //   plans: updateData(
-                  //     plans,
-                  //     val,
-                  //     index,
-                  //     "typography",
-                  //     "popular"
-                  //   ),
-                  // });
                   updateTypography(index, "badge", val);
                 }}
               />
@@ -191,15 +177,6 @@ const Style = ({ attributes, setAttributes }) => {
                 label={__(" Button Typography", "b-blocks")}
                 value={button}
                 onChange={(val) => {
-                  // setAttributes({
-                  //   plans: updateData(
-                  //     plans,
-                  //     val,
-                  //     index,
-                  //     "typography",
-                  //     "button"
-                  //   ),
-                  // });
                   updateTypography(index, "button", val);
                 }}
               />
@@ -222,11 +199,11 @@ const Style = ({ attributes, setAttributes }) => {
                     ),
                   })
                 }
-                defaultColor="#4B7BEC"
+                defaultColor={plan.cardHeaderBackgroundColor}
               />
 
               <Divider />
-              
+
               <HexColorControl
                 label={__("Card Body Background Color")}
                 value={plan.cardBodyBackgroundColor}
@@ -240,10 +217,10 @@ const Style = ({ attributes, setAttributes }) => {
                     ),
                   })
                 }
-                // defaultColor="#fff"
+                defaultColor={plan.cardBodyBackgroundColor}
               />
 
-              <Divider/>
+              <Divider />
 
               <HexColorControl
                 label={__("Discount Color")}
@@ -253,9 +230,11 @@ const Style = ({ attributes, setAttributes }) => {
                     plans: updateData(plans, newColor, index, "discountColor"),
                   })
                 }
-                defaultColor="#4b7bec"
+                defaultColor={plan.discountColor}
                 disableAlpha={true}
               />
+
+              <Divider />
               {/* <ColorControl
                 label={__("Button Background Color")}
                 value={plan.buttonBg}
@@ -282,6 +261,8 @@ const Style = ({ attributes, setAttributes }) => {
                   gradient: "linear-gradient(to left, #a55eea, #45aaf2)",
                 }}
               />
+
+              <Divider />
               <HexColorControl
                 label={__("Button Hover Background Color")}
                 value={plan.buttonHoverBg}
@@ -290,8 +271,10 @@ const Style = ({ attributes, setAttributes }) => {
                     plans: updateData(plans, newColor, index, "buttonHoverBg"),
                   })
                 }
-                defaultColor="#ffffff"
+                defaultColor={plan.buttonHoverBg}
               />
+
+              <Divider />
 
               <HexColorControl
                 label={__("Button Text Color")}
@@ -303,6 +286,8 @@ const Style = ({ attributes, setAttributes }) => {
                 }
               />
 
+              <Divider />
+
               <ColorControl
                 label={__("Badge Background Color")}
                 value={plan.badgeBg}
@@ -311,8 +296,11 @@ const Style = ({ attributes, setAttributes }) => {
                     plans: updateData(plans, newColor, index, "badgeBg"),
                   })
                 }
-                defaultColor="#ffffff"
+                defaultColor={plan.badgeBg}
               />
+
+              <Divider />
+
               <HexColorControl
                 label={__("Badge Text Color")}
                 value={plan.badgeColor}
@@ -321,7 +309,7 @@ const Style = ({ attributes, setAttributes }) => {
                     plans: updateData(plans, newColor, index, "badgeColor"),
                   })
                 }
-                defaultColor="#ffffff"
+                defaultColor={plan.badgeColor}
               />
             </PanelBody>
             <PanelBody
@@ -333,20 +321,9 @@ const Style = ({ attributes, setAttributes }) => {
                 label="Card Shadow"
                 value={cardShadow}
                 onChange={(newShadow) => {
-                  // setAttributes({
-                  //   plans: updateData(
-                  //     plans,
-                  //     newShadow,
-                  //     index,
-                  //     "shadow",
-                  //     "cardShadow"
-
-                  //   ),
-                  // });
                   updateShadow(index, "cardShadow", newShadow);
                 }}
                 type="cardShadow"
-                // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
                 defaults={[
                   {
                     hOffset: "0px",
@@ -446,7 +423,29 @@ const Style = ({ attributes, setAttributes }) => {
                 max={100}
               />
               <RangeControl
+                label={__("Horizontal Badge Position", "my-block")}
+                value={badgePosition}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(plans, newRadius, index, "badgePosition"),
+                  })
+                }
+                min={0}
+                max={100}
+              />
+              <RangeControl
                 label={__("Badge Radius", "my-block")}
+                value={badgeRadius}
+                onChange={(newRadius) =>
+                  setAttributes({
+                    plans: updateData(plans, newRadius, index, "badgeRadius"),
+                  })
+                }
+                min={0}
+                max={100}
+              />
+              <RangeControl
+                label={__("Discount Badge Radius", "my-block")}
                 value={saveRadius}
                 onChange={(newRadius) =>
                   setAttributes({
